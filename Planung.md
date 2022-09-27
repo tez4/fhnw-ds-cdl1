@@ -5,6 +5,7 @@
 - Joggen
 - Sitzen
 - ÖV fahren
+- Velo fahren
 
 ### was genau im Projekt erreicht werden soll / was nicht (Scope)
 ### was es für Milestones gibt und wann diese etwa erreicht sein sollen (Planung)
