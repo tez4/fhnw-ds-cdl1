@@ -6,8 +6,8 @@
 - Sitzen
 - Velo fahren
 
-In Hosentasche
 ---
+In Hosentasche
 
 Erwartung: 90% mit deep learning und 80% ohne deep learning
 
@@ -31,7 +31,7 @@ Out of Scope:
 - Bericht fertigstellen
 
 ### wie das Vorgehen für die Datensicherung und Beschriftung (Label), die Datenverarbeitung, sowie die Modellierung ist (Konzept)
-- Immer Blöcke von 20 Minuten und eine Aktivität aufzeichnen. Diese Daten dann als csv mit Name der Aktivität im Titel speichern.
+- Immer Blöcke von 20 Minuten und eine Aktivität aufzeichnen. Diese Daten dann als csv mit Name der Aktivität und Aufnahmegerät / Position im Titel speichern. (Velo-Fahren aufwärts / abwärts)
 - Anfang und Ende von den Files entfernen
 - Schauen, dass wir es zusammenführen können (gleiche Spalten in den Files)
 - Daten aggregieren?
