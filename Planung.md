@@ -1,5 +1,5 @@
 # Planung und Konzeption
----
+
 ### Welche Bewegungsprofile erkannt werden sollen und mit welcher erhofften Genauigkeit
 Folgende Aktivitäten sollen aufgezeichnet und klassifiziert werden:
 - Gehen / Laufen
