@@ -1,0 +1,21 @@
+file,user,activity,pocket,position_x,position_y
+walking_jg_1.csv,jg,walking,left pant pocket,screen towards body,upright
+walking_jg_2.csv,jg,walking,left pant pocket,screen towards body,upside down
+walking_jg_3.csv,jg,walking,left pant pocket,screen towards body,upside down
+running_jg_1.csv,jg,running,left pant pocket,screen towards body,upside down
+running_jg_2.csv,jg,running,left pant pocket,screen towards body,upright
+running_nz_1.csv,nz,running,left jacket pocket,screen not towards body,upright
+walking_nz_1.csv,nz,walking,left jacket pocket,screen not towards body,upright
+walking_nz_2.csv,nz,walking,left jacket pocket,screen towards body,upright
+sitting_jg_1.csv,jg,sitting,left pant pocket,screen towards body,upside down
+sitting_jg_2.csv,jg,sitting,left pant pocket,screen not towards body,upside down
+sitting_nz_3.csv,nz,sitting,left pant pocket,screen not towards body,upright
+walking_nz_4.csv,nz,walking,left pant pocket,screen towards body,upside down
+running_nz_3.csv,nz,running,left pant pocket,screen not towards body,upright
+running_jg_3.csv,jg,running,left pant pocket,screen not towards body,upside down
+running_jg_4.csv,jg,running,left pant pocket,screen not towards body,upright
+running_jg_5.csv,jg,running,left pant pocket,screen not towards body,upright
+cycling_nz_3.csv,nz,cycling,left pant pocket,screen not towards body,upright
+cycling_jg_1.csv,jg,cycling,left pant pocket,screen towards body,upside down
+cycling_jg_2.csv,jg,cycling,left pant pocket,screen towards body,upright
+cycling_jg_3.csv,jg,cycling,left pant pocket,screen towards body,upright
