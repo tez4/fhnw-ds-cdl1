@@ -1,0 +1,27 @@
+{
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=F401"  // "--ignore=E402,F841,F401,E302,E305",
+    ],
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": ["--max-line-length", "200", "--experimental"],
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": false
+    },
+    "editor.fontSize": 13,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [120],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#37373d"
+    },
+    "autoDocstring.docstringFormat": "google",
+    "cSpell.language": "en,de-de",
+}
