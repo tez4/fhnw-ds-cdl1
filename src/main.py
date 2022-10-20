@@ -17,6 +17,7 @@ def update_meta_data():
                 'cycling_jg_1.csv',  # added JG 20221012
                 'cycling_jg_2.csv', 'cycling_jg_3.csv',  # added JG 20221017
                 'cycling_jg_4.csv', 'cycling_jg_5.csv',  # added JG 20221020
+                'sitting_jg_3.csv', 'sitting_jg_4.csv',  # added JG 20221020
             ],
             'user': [
                 'jg', 'jg', 'jg', 'jg', 'jg',
@@ -27,6 +28,7 @@ def update_meta_data():
                 'nz',  # added NZ 20221012
                 'jg',  # added JG 20221012
                 'jg', 'jg',  # added JG 20221017
+                'jg', 'jg',  # added JG 20221020
                 'jg', 'jg',  # added JG 20221020
             ],
             'activity': [
@@ -39,6 +41,7 @@ def update_meta_data():
                 'cycling',  # added JG 20221012
                 'cycling', 'cycling',  # added JG 20221017
                 'cycling', 'cycling',  # added JG 20221020
+                'sitting', 'sitting',  # added JG 20221020
             ],
             'pocket': [
                 'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket',
@@ -49,6 +52,7 @@ def update_meta_data():
                 'left pant pocket',  # added NZ 20221012
                 'left pant pocket',  # added JG 20221012
                 'left pant pocket', 'left pant pocket',  # added JG 20221017
+                'left pant pocket', 'left pant pocket',  # added JG 20221020
                 'left pant pocket', 'left pant pocket',  # added JG 20221020
             ],
             'position_x': [
@@ -62,6 +66,7 @@ def update_meta_data():
                 'screen towards body',  # added JG 20221012
                 'screen towards body', 'screen towards body',  # added JG 20221017
                 'screen not towards body', 'screen not towards body',  # added JG 20221020
+                'screen towards body', 'screen not towards body',  # added JG 20221020
             ],
             'position_y': [
                 'upright', 'upside down', 'upside down', 'upside down', 'upright',
@@ -73,6 +78,7 @@ def update_meta_data():
                 'upside down',  # added JG 20221012
                 'upright', 'upright',  # added JG 20221017
                 'upside down', 'upright',  # added JG 20221020
+                'upright', 'upright',  # added JG 20221020
             ]
         }
     )
