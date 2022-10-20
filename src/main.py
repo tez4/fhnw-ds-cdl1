@@ -83,12 +83,11 @@ def update_meta_data():
 
 
 def read_nz_file(file: str, activity: str) -> pd.DataFrame:
+    df = pd.read_csv(f'data/{file}')[1200:-1200]
 
-    df = pd.read_csv(  # file,
-        f'data/{file}',
-        parse_dates=["loggingTime(txt)"],
-        date_parser=lambda col: pd.to_datetime(col, utc=True)  # to handle timezone
-    )[1200:-1200]  # remove first few and last few seconds
+    # simply removes time zone (not entirely correct but good enough for our purposes)
+    df['loggingTime(txt)'] = df['loggingTime(txt)'].str.split('+').str.get(0)
+    df['loggingTime(txt)'] = pd.to_datetime(df['loggingTime(txt)'], format='%Y-%m-%d %H:%M:%S.%f')
 
     # add file name in new column
     df['y'] = activity
