@@ -16,6 +16,8 @@ sitting_jg_4.csv,jg,sitting,left pant pocket,screen not towards body,upright
 walking_jg_1.csv,jg,walking,left pant pocket,screen towards body,upright
 walking_jg_2.csv,jg,walking,left pant pocket,screen towards body,upside down
 walking_jg_3.csv,jg,walking,left pant pocket,screen towards body,upside down
+walking_jg_4.csv,jg,walking,left pant pocket,screen not towards body,upside down
+walking_jg_5.csv,jg,walking,left pant pocket,screen not towards body,upright
 cycling_nz_3.csv,nz,cycling,left pant pocket,screen not towards body,upright
 running_nz_1.csv,nz,running,left jacket pocket,screen not towards body,upright
 running_nz_3.csv,nz,running,left pant pocket,screen not towards body,upright
