@@ -11,6 +11,7 @@ scipy = "*"
 plotly = "*"
 ipykernel = "*"
 jupyter = "*"
+scikit-learn = "*"
 
 [dev-packages]
 autopep8 = "*"
