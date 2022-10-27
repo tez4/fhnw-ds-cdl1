@@ -185,3 +185,46 @@ def read_jg_file(file: str, activity: str) -> pd.DataFrame:
     df = df[[c for c in cols]]
 
     return df
+
+
+def split_df(df: pd.DataFrame, hz: float = 100, test_proportion: float = 0.2):
+    # select every nth row
+    if test_proportion > 100:
+        raise Exception('hz must be less than 100!')
+    nth = int(100 / hz)
+    df = df.iloc[::nth, :]
+
+    # split into train and test
+    if test_proportion >= 1 or test_proportion <= 0:
+        raise Exception('test_proportion must be between 0 and 1!')
+
+    my_train_files = []
+    my_test_files = []
+
+    # test_per_minute = int(60 * test_proportion * hz)
+    # train_per_minute = int((60 * hz) - test_per_minute)
+
+    while len(df) / hz > 0:
+        if len(df) / hz < 600:
+            x = df
+            df = pd.DataFrame()
+        else:
+            x = df[:300 * hz:]
+            df = df[300 * hz:]
+
+        train_count = int(len(x) * (1 - test_proportion))
+
+        my_train_files.append(x.iloc[: train_count])
+        my_test_files.append(x.iloc[train_count:])
+
+    print([len(i) for i in my_train_files])
+    print([len(i) for i in my_test_files])
+
+    return (my_train_files, my_test_files)
+
+
+def aggregate_files(files: list, aggregate: pd.DataFrame) -> pd.DataFrame:
+    for v in files:
+        aggregate = pd.concat([aggregate, v])
+
+    return aggregate
