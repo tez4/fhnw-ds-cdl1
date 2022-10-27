@@ -126,7 +126,10 @@ def read_nz_file(file: str, activity: str) -> pd.DataFrame:
     # rename columns
     df = df.rename(my_cols, axis=1)
 
-    cols = list(my_cols.values()) + ['y']
+    min = df['datetime'].min()
+    df['time_since_start(ms)'] = df["datetime"].map(lambda name: int((name - min).total_seconds() * 1000))
+
+    cols = list(my_cols.values()) + ['time_since_start(ms)', 'y']
 
     # select columns
     df = df[[c for c in cols]]
@@ -217,9 +220,6 @@ def split_df(df: pd.DataFrame, hz: float = 100, test_proportion: float = 0.2):
         my_train_files.append(x.iloc[: train_count])
         my_test_files.append(x.iloc[train_count:])
 
-    print([len(i) for i in my_train_files])
-    print([len(i) for i in my_test_files])
-
     return (my_train_files, my_test_files)
 
 
@@ -228,3 +228,11 @@ def aggregate_files(files: list, aggregate: pd.DataFrame) -> pd.DataFrame:
         aggregate = pd.concat([aggregate, v])
 
     return aggregate
+
+
+def add_moving_window(df, hz_old_data, seconds, step_size):
+    rows = hz_old_data * seconds
+
+    df = df.rolling(window=rows, step=step_size).sum()[int(rows / step_size):]
+
+    return df
