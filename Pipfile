@@ -12,6 +12,7 @@ plotly = "*"
 ipykernel = "*"
 jupyter = "*"
 scikit-learn = "*"
+wandb = "*"
 
 [dev-packages]
 autopep8 = "*"
