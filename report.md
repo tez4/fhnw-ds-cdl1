@@ -6,14 +6,14 @@
 
 **Instructor:** Marcel Messerli
 
-**Date:** 20.01.2023 
+**Date:** 2023-01-20
 
 ## Table of Contents
 - [Sensor based Activity Recognition](#sensor-based-activity-recognition)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Methodology](#methodology)
-    - [Date collection](#date-collection)
+    - [Data collection](#data-collection)
     - [Data wrangling](#data-wrangling)
     - [Model training](#model-training)
   - [Results](#results)
@@ -23,7 +23,7 @@
 
 ## Methodology
 
-### Date collection
+### Data collection
 
 - frequency: 100 hz
 - application: AndroSensor (android) and SensorLog (IOS)
