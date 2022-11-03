@@ -1,9 +1,27 @@
 # Sensor based Activity Recognition
-By Navjot Zubler and Joël Grosjean
 
-## Introducition
+<img align="right" height="50" src="/media/fhnw-logo.svg">
 
-## Methdology
+**Team members:** Navjot Zubler, Joël Grosjean
+
+**Instructor:** Marcel Messerli
+
+**Date:** 20.01.2023 
+
+## Table of Contents
+- [Sensor based Activity Recognition](#sensor-based-activity-recognition)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Methodology](#methodology)
+    - [Date collection](#date-collection)
+    - [Data wrangling](#data-wrangling)
+    - [Model training](#model-training)
+  - [Results](#results)
+  - [Key learnings](#key-learnings)
+
+## Introduction
+
+## Methodology
 
 ### Date collection
 
