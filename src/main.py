@@ -99,6 +99,38 @@ def update_meta_data():
 
     meta.to_csv('data/meta.csv', index=False)
 
+#added function NZ 20221108
+#NZ - remove unnecessary columns from SensorLog File/below list
+remove_cols = ['loggingSample(N)','locationTimestamp_since1970(s)', 'locationCourseAccuracy(°)', 'locationVerticalAccuracy(m)',
+               'locationHorizontalAccuracy(m)', 'locationFloor(Z)','locationHeadingTimestamp_since1970(s)', 'locationHeadingX(µT)',
+               'locationHeadingY(µT)', 'locationHeadingZ(µT)','locationTrueHeading(°)', 'locationMagneticHeading(°)',
+               'locationHeadingAccuracy(°)', 'accelerometerTimestamp_sinceReboot(s)',
+               'gyroTimestamp_sinceReboot(s)','magnetometerTimestamp_sinceReboot(s)',
+               'motionTimestamp_sinceReboot(s)', 'motionAttitudeReferenceFrame(txt)',
+               'motionQuaternionX(R)', 'motionQuaternionY(R)', 'motionQuaternionZ(R)',
+               'motionQuaternionW(R)', 'motionHeading(°)', 'motionMagneticFieldCalibrationAccuracy(Z)',
+               'activityTimestamp_sinceReboot(s)', 'activity(txt)', 'activityActivityConfidence(Z)', 'activityActivityStartDate(txt)',
+               'pedometerStartDate(txt)', 'pedometerNumberofSteps(N)', 'pedometerAverageActivePace(s/m)', 'pedometerCurrentPace(s/m)',
+               'pedometerCurrentCadence(steps/s)', 'pedometerDistance(m)','pedometerFloorAscended(N)', 'pedometerFloorDescended(N)',
+               'pedometerEndDate(txt)', 'altimeterTimestamp_sinceReboot(s)','altimeterReset(bool)', 'altimeterRelativeAltitude(m)',
+               'altimeterPressure(kPa)', 'deviceOrientationTimeStamp_since1970(s)','deviceOrientation(Z)', 'label(N)']
+
+def load_clean(from_file,remove_cols,to_file):
+    '''
+    This function is required for cleaning raw data from source SensorLog only. i.e. sensor data from user Navjot Zubler (nz)
+    arguments:
+        from_file: path to raw data file [path]
+        remove_cols: List of column name to be dropped from df [list]
+        to_file: filename to output as [text]
+    '''
+    #load data
+    df = pd.read_csv(from_file)
+    
+    #change the 'loggingTime(txt)' to datetime
+    df['loggingTime(txt)'] = pd.to_datetime(df['loggingTime(txt)'], format = '%Y-%m-%dT%H:%M:%S.%f')
+    
+    #Drop unnecessary columns, round to 6 decimal places, output to csv file
+    df.drop(remove_cols, axis = 1).round(6).to_csv(to_file,index = False)
 
 def read_nz_file(file: str, activity: str) -> pd.DataFrame:
     df = pd.read_csv(f'data/{file}')[1200:-1200]
