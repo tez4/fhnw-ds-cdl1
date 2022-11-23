@@ -19,7 +19,8 @@ def update_meta_data():
                 'cycling_jg_4.csv', 'cycling_jg_5.csv',  # added JG 20221020
                 'sitting_jg_3.csv', 'sitting_jg_4.csv',  # added JG 20221020
                 'walking_jg_4.csv', 'walking_jg_5.csv',  # added JG 20221025
-                'walking_nz_5.csv', 'running_nz_6.csv', 'running_nz_7.csv', 'cycling_nz_8.csv', 'cycling_nz_9.csv', #added 20221108
+                'walking_nz_5.csv', 'running_nz_6.csv', 'running_nz_7.csv', 'cycling_nz_8.csv',
+                'cycling_nz_9.csv',  # added 20221108
             ],
             'user': [
                 'jg', 'jg', 'jg', 'jg', 'jg',
@@ -33,7 +34,8 @@ def update_meta_data():
                 'jg', 'jg',  # added JG 20221020
                 'jg', 'jg',  # added JG 20221020
                 'jg', 'jg',  # added JG 20221025
-                'nz', 'nz', 'nz', 'nz', 'nz', #added 20221108
+                'nz', 'nz', 'nz', 'nz',
+                'nz',  # added 20221108
             ],
             'activity': [
                 'walking', 'walking', 'walking', 'running', 'running',
@@ -47,7 +49,8 @@ def update_meta_data():
                 'cycling', 'cycling',  # added JG 20221020
                 'sitting', 'sitting',  # added JG 20221020
                 'walking', 'walking',  # added JG 20221025
-                'walking', 'running', 'running', 'cycling', 'cycling', #added 20221108
+                'walking', 'running', 'running', 'cycling',
+                'cycling',  # added 20221108
             ],
             'pocket': [
                 'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket',
@@ -61,7 +64,8 @@ def update_meta_data():
                 'left pant pocket', 'left pant pocket',  # added JG 20221020
                 'left pant pocket', 'left pant pocket',  # added JG 20221020
                 'left pant pocket', 'left pant pocket',  # added JG 20221025
-                'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket', #added 20221108
+                'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket',
+                'left pant pocket',  # added 20221108
             ],
             'position_x': [
                 'screen towards body', 'screen towards body', 'screen towards body', 'screen towards body',
@@ -76,7 +80,8 @@ def update_meta_data():
                 'screen not towards body', 'screen not towards body',  # added JG 20221020
                 'screen towards body', 'screen not towards body',  # added JG 20221020
                 'screen not towards body', 'screen not towards body',  # added JG 20221025
-                'screen towards body', 'screen towards body', 'screen towards body', 'screen towards body', 'screen towards body',#20221108
+                'screen towards body', 'screen towards body', 'screen towards body', 'screen towards body',
+                'screen towards body',  # 20221108
             ],
             'position_y': [
                 'upright', 'upside down', 'upside down', 'upside down', 'upright',
@@ -90,7 +95,8 @@ def update_meta_data():
                 'upside down', 'upright',  # added JG 20221020
                 'upright', 'upright',  # added JG 20221020
                 'upside down', 'upright',  # added JG 20221025
-                'upside down', 'upside down', 'upright', 'upside down', 'upright', #20221108
+                'upside down', 'upside down', 'upright', 'upside down',
+                'upright',  # 20221108
             ]
         }
     )
@@ -99,38 +105,46 @@ def update_meta_data():
 
     meta.to_csv('data/meta.csv', index=False)
 
-#added function NZ 20221108
-#NZ - remove unnecessary columns from SensorLog File/below list
-remove_cols = ['loggingSample(N)','locationTimestamp_since1970(s)', 'locationCourseAccuracy(°)', 'locationVerticalAccuracy(m)',
-               'locationHorizontalAccuracy(m)', 'locationFloor(Z)','locationHeadingTimestamp_since1970(s)', 'locationHeadingX(µT)',
-               'locationHeadingY(µT)', 'locationHeadingZ(µT)','locationTrueHeading(°)', 'locationMagneticHeading(°)',
-               'locationHeadingAccuracy(°)', 'accelerometerTimestamp_sinceReboot(s)',
-               'gyroTimestamp_sinceReboot(s)','magnetometerTimestamp_sinceReboot(s)',
-               'motionTimestamp_sinceReboot(s)', 'motionAttitudeReferenceFrame(txt)',
-               'motionQuaternionX(R)', 'motionQuaternionY(R)', 'motionQuaternionZ(R)',
-               'motionQuaternionW(R)', 'motionHeading(°)', 'motionMagneticFieldCalibrationAccuracy(Z)',
-               'activityTimestamp_sinceReboot(s)', 'activity(txt)', 'activityActivityConfidence(Z)', 'activityActivityStartDate(txt)',
-               'pedometerStartDate(txt)', 'pedometerNumberofSteps(N)', 'pedometerAverageActivePace(s/m)', 'pedometerCurrentPace(s/m)',
-               'pedometerCurrentCadence(steps/s)', 'pedometerDistance(m)','pedometerFloorAscended(N)', 'pedometerFloorDescended(N)',
-               'pedometerEndDate(txt)', 'altimeterTimestamp_sinceReboot(s)','altimeterReset(bool)', 'altimeterRelativeAltitude(m)',
-               'altimeterPressure(kPa)', 'deviceOrientationTimeStamp_since1970(s)','deviceOrientation(Z)', 'label(N)']
 
-def load_clean(from_file,remove_cols,to_file):
-    '''
-    This function is required for cleaning raw data from source SensorLog only. i.e. sensor data from user Navjot Zubler (nz)
+# added function NZ 20221108
+# NZ - remove unnecessary columns from SensorLog File/below list
+remove_cols = [
+    'loggingSample(N)', 'locationTimestamp_since1970(s)', 'locationCourseAccuracy(°)',
+    'locationVerticalAccuracy(m)', 'locationHorizontalAccuracy(m)', 'locationFloor(Z)',
+    'locationHeadingTimestamp_since1970(s)', 'locationHeadingX(µT)',
+    'locationHeadingY(µT)', 'locationHeadingZ(µT)', 'locationTrueHeading(°)', 'locationMagneticHeading(°)',
+    'locationHeadingAccuracy(°)', 'accelerometerTimestamp_sinceReboot(s)',
+    'gyroTimestamp_sinceReboot(s)', 'magnetometerTimestamp_sinceReboot(s)',
+    'motionTimestamp_sinceReboot(s)', 'motionAttitudeReferenceFrame(txt)',
+    'motionQuaternionX(R)', 'motionQuaternionY(R)', 'motionQuaternionZ(R)',
+    'motionQuaternionW(R)', 'motionHeading(°)', 'motionMagneticFieldCalibrationAccuracy(Z)',
+    'activityTimestamp_sinceReboot(s)', 'activity(txt)', 'activityActivityConfidence(Z)',
+    'activityActivityStartDate(txt)', 'pedometerStartDate(txt)', 'pedometerNumberofSteps(N)',
+    'pedometerAverageActivePace(s/m)', 'pedometerCurrentPace(s/m)', 'pedometerCurrentCadence(steps/s)',
+    'pedometerDistance(m)', 'pedometerFloorAscended(N)', 'pedometerFloorDescended(N)',
+    'pedometerEndDate(txt)', 'altimeterTimestamp_sinceReboot(s)', 'altimeterReset(bool)',
+    'altimeterRelativeAltitude(m)', 'altimeterPressure(kPa)', 'deviceOrientationTimeStamp_since1970(s)',
+    'deviceOrientation(Z)', 'label(N)'
+]
+
+
+def load_clean(from_file, remove_cols, to_file):
+    ''' This function is required for cleaning raw data from source SensorLog only. i.e. sensor data from nz
+
     arguments:
         from_file: path to raw data file [path]
         remove_cols: List of column name to be dropped from df [list]
         to_file: filename to output as [text]
     '''
-    #load data
+    # load data
     df = pd.read_csv(from_file)
-    
-    #change the 'loggingTime(txt)' to datetime
-    df['loggingTime(txt)'] = pd.to_datetime(df['loggingTime(txt)'], format = '%Y-%m-%dT%H:%M:%S.%f')
-    
-    #Drop unnecessary columns, round to 6 decimal places, output to csv file
-    df.drop(remove_cols, axis = 1).round(6).to_csv(to_file,index = False)
+
+    # change the 'loggingTime(txt)' to datetime
+    df['loggingTime(txt)'] = pd.to_datetime(df['loggingTime(txt)'], format='%Y-%m-%dT%H:%M:%S.%f')
+
+    # Drop unnecessary columns, round to 6 decimal places, output to csv file
+    df.drop(remove_cols, axis=1).round(6).to_csv(to_file, index=False)
+
 
 def read_nz_file(file: str, activity: str) -> pd.DataFrame:
     df = pd.read_csv(f'data/{file}')[1200:-1200]
@@ -271,6 +285,34 @@ def aggregate_files(files: list, aggregate: pd.DataFrame) -> pd.DataFrame:
 def add_moving_window(df, hz_old_data, seconds, step_size):
     rows = hz_old_data * seconds
 
-    df = df.rolling(window=rows, step=step_size).sum()[int(rows / step_size):]
+    y = df.iloc[::step_size, :]['y'].iloc[int(rows / step_size):]
+
+    # get mean and std for rolling window
+    df = df.rolling(window=rows, step=step_size).agg(
+        {
+            'gyroscope_X(rad/s)': ["mean", "std"],
+            'gyroscope_Y(rad/s)': ["mean", "std"],
+            'gyroscope_Z(rad/s)': ["mean", "std"],
+            'magnetometer_X(microT)': ["mean", "std"],
+            'magnetometer_Y(microT)': ["mean", "std"],
+            'magnetometer_Z(microT)': ["mean", "std"],
+            'time_since_start(ms)': ["mean", "std"],
+            'gravity_X(G)': ["mean", "std"],
+            'gravity_Y(G)': ["mean", "std"],
+            'gravity_Z(G)': ["mean", "std"],
+            'accelerometer_X(G)': ["mean", "std"],
+            'accelerometer_Y(G)': ["mean", "std"],
+            'accelerometer_Z(G)': ["mean", "std"],
+            'orientation_X(rad)': ["mean", "std"],
+            'orientation_Y(rad)': ["mean", "std"],
+            'orientation_Z(rad)': ["mean", "std"],
+        }
+    )[int(rows / step_size):]
+
+    # add y
+    df['y'] = y
+
+    # remove multi-index
+    df.columns = ['_'.join(col) for col in df.columns.values]
 
     return df
