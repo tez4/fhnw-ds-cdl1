@@ -309,10 +309,10 @@ def add_moving_window(df, hz_old_data, seconds, step_size):
         }
     )[int(rows / step_size):]
 
-    # add y
-    df['y'] = y
-
     # remove multi-index
     df.columns = ['_'.join(col) for col in df.columns.values]
+
+    # add y
+    df['y'] = y
 
     return df
