@@ -242,7 +242,7 @@ def read_jg_file(file: str, activity: str) -> pd.DataFrame:
     return df
 
 
-def split_df(df: pd.DataFrame, hz: float = 100, test_proportion: float = 0.2):
+def split_df(df: pd.DataFrame, hz: float, test_proportion: float, moving_window_size: float):
     # select every nth row
     if test_proportion > 100:
         raise Exception('hz must be less than 100!')
@@ -267,7 +267,7 @@ def split_df(df: pd.DataFrame, hz: float = 100, test_proportion: float = 0.2):
             x = df[:300 * hz:]
             df = df[300 * hz:]
 
-        train_count = int(len(x) * (1 - test_proportion))
+        train_count = int((len(x) - (moving_window_size * hz * 2)) * (1 - test_proportion)) + (moving_window_size * hz)
 
         my_train_files.append(x.iloc[: train_count])
         my_test_files.append(x.iloc[train_count:])
