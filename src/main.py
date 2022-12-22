@@ -296,7 +296,6 @@ def add_moving_window(df, hz_old_data, seconds, step_size):
             'magnetometer_X(microT)': ["mean", "std"],
             'magnetometer_Y(microT)': ["mean", "std"],
             'magnetometer_Z(microT)': ["mean", "std"],
-            'time_since_start(ms)': ["mean", "std"],
             'gravity_X(G)': ["mean", "std"],
             'gravity_Y(G)': ["mean", "std"],
             'gravity_Z(G)': ["mean", "std"],
