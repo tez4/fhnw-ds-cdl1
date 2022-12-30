@@ -145,6 +145,13 @@ def load_clean(from_file, remove_cols, to_file):
     # Drop unnecessary columns, round to 6 decimal places, output to csv file
     df.drop(remove_cols, axis=1).round(6).to_csv(to_file, index=False)
 
+#added 30.12.2022
+def vector_magnitude(df, x,y,z):
+    '''
+    function to calculate the vector magnitude
+    '''
+    v =(df[x]**2 + df[y]**2 + df[z]**2).pow(1/2)
+    return v
 
 def read_nz_file(file: str, activity: str) -> pd.DataFrame:
     df = pd.read_csv(f'data/{file}')[1200:-1200]
@@ -185,6 +192,14 @@ def read_nz_file(file: str, activity: str) -> pd.DataFrame:
 
     # select columns
     df = df[[c for c in cols]]
+
+    # additional variables - Vector magnitude
+    df['v_accelerometer'] = vector_magnitude(df, 'accelerometer_X(G)', 'accelerometer_Y(G)', 'accelerometer_Z(G)')
+    df['v_gyroscope'] = vector_magnitude(df, 'gyroscope_X(rad/s)', 'gyroscope_Y(rad/s)', 'gyroscope_Z(rad/s)')
+    df['v_magnetometer'] = vector_magnitude(df, 'magnetometer_X(microT)', 'magnetometer_Y(microT)',
+                                            'magnetometer_Z(microT)')
+    df['v_gravity'] = vector_magnitude(df, 'gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)')
+    df['v_orientation'] = vector_magnitude(df, 'orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)')
 
     return df
 
@@ -238,6 +253,14 @@ def read_jg_file(file: str, activity: str) -> pd.DataFrame:
 
     # select columns
     df = df[[c for c in cols]]
+
+    # additional variables - Vector magnitude
+    df['v_accelerometer'] = vector_magnitude(df, 'accelerometer_X(G)', 'accelerometer_Y(G)', 'accelerometer_Z(G)')
+    df['v_gyroscope'] = vector_magnitude(df, 'gyroscope_X(rad/s)', 'gyroscope_Y(rad/s)', 'gyroscope_Z(rad/s)')
+    df['v_magnetometer'] = vector_magnitude(df, 'magnetometer_X(microT)', 'magnetometer_Y(microT)',
+                                            'magnetometer_Z(microT)')
+    df['v_gravity'] = vector_magnitude(df, 'gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)')
+    df['v_orientation'] = vector_magnitude(df, 'orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)')
 
     return df
 
@@ -305,6 +328,32 @@ def add_moving_window(df, hz_old_data, seconds, step_size):
             'orientation_X(rad)': ["mean", "std"],
             'orientation_Y(rad)': ["mean", "std"],
             'orientation_Z(rad)': ["mean", "std"],
+        }
+    )[int(rows / step_size):]
+
+    # remove multi-index
+    df.columns = ['_'.join(col) for col in df.columns.values]
+
+    # add y
+    df['y'] = y
+
+    return df
+
+#added 30.12.2022
+def add_moving_window_2(df, hz_old_data, seconds, step_size):
+    rows = hz_old_data * seconds
+
+    y = df.iloc[::step_size, :]['y'].iloc[int(rows / step_size):]
+
+    # get mean and std for rolling window
+    df = df.rolling(window=rows, step=step_size).agg(
+        {
+            'v_accelerometer' : ["mean", "std"],
+            'v_gyroscope':  ["mean", "std"],
+            'v_magnetometer':  ["mean", "std"],
+            'v_gravity':  ["mean", "std"],
+            'v_orientation':  ["mean", "std"]
+
         }
     )[int(rows / step_size):]
 
