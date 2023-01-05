@@ -201,6 +201,20 @@ def read_nz_file(file: str, activity: str) -> pd.DataFrame:
     df['v_gravity'] = vector_magnitude(df, 'gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)')
     df['v_orientation'] = vector_magnitude(df, 'orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)')
 
+    # absolute values of min/max from each sensor coordinate X,Y,Z
+    df['min_accelerometer'] = abs(df[['accelerometer_X(G)', 'accelerometer_Y(G)', 'accelerometer_Z(G)']].min(axis=1))
+    df['max_accelerometer'] = abs(df[['accelerometer_X(G)', 'accelerometer_Y(G)', 'accelerometer_Z(G)']].max(axis=1))
+    df['min_gyroscope'] = abs(df[['gyroscope_X(rad/s)', 'gyroscope_Y(rad/s)', 'gyroscope_Z(rad/s)']].min(axis=1))
+    df['max_gyroscope'] = abs(df[['gyroscope_X(rad/s)', 'gyroscope_Y(rad/s)', 'gyroscope_Z(rad/s)']].max(axis=1))
+    df['min_magnetometer'] = abs(
+        df[['magnetometer_X(microT)', 'magnetometer_Y(microT)', 'magnetometer_Z(microT)']].min(axis=1))
+    df['max_magnetometer'] = abs(
+        df[['magnetometer_X(microT)', 'magnetometer_Y(microT)', 'magnetometer_Z(microT)']].max(axis=1))
+    df['min_gravity'] = abs(df[['gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)']].min(axis=1))
+    df['max_gravity'] = abs(df[['gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)']].max(axis=1))
+    df['min_orientation'] = abs(df[['orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)']].min(axis=1))
+    df['max_orientation'] = abs(df[['orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)']].max(axis=1))
+
     return df
 
 
@@ -261,6 +275,20 @@ def read_jg_file(file: str, activity: str) -> pd.DataFrame:
                                             'magnetometer_Z(microT)')
     df['v_gravity'] = vector_magnitude(df, 'gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)')
     df['v_orientation'] = vector_magnitude(df, 'orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)')
+
+    # absolute values of min/max from each sensor coordinate X,Y,Z
+    df['min_accelerometer'] = abs(df[['accelerometer_X(G)', 'accelerometer_Y(G)', 'accelerometer_Z(G)']].min(axis=1))
+    df['max_accelerometer'] = abs(df[['accelerometer_X(G)', 'accelerometer_Y(G)', 'accelerometer_Z(G)']].max(axis=1))
+    df['min_gyroscope'] = abs(df[['gyroscope_X(rad/s)', 'gyroscope_Y(rad/s)', 'gyroscope_Z(rad/s)']].min(axis=1))
+    df['max_gyroscope'] = abs(df[['gyroscope_X(rad/s)', 'gyroscope_Y(rad/s)', 'gyroscope_Z(rad/s)']].max(axis=1))
+    df['min_magnetometer'] = abs(
+        df[['magnetometer_X(microT)', 'magnetometer_Y(microT)', 'magnetometer_Z(microT)']].min(axis=1))
+    df['max_magnetometer'] = abs(
+        df[['magnetometer_X(microT)', 'magnetometer_Y(microT)', 'magnetometer_Z(microT)']].max(axis=1))
+    df['min_gravity'] = abs(df[['gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)']].min(axis=1))
+    df['max_gravity'] = abs(df[['gravity_X(G)', 'gravity_Y(G)', 'gravity_Z(G)']].max(axis=1))
+    df['min_orientation'] = abs(df[['orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)']].min(axis=1))
+    df['max_orientation'] = abs(df[['orientation_X(rad)', 'orientation_Y(rad)', 'orientation_Z(rad)']].max(axis=1))
 
     return df
 
@@ -339,7 +367,7 @@ def add_moving_window(df, hz_old_data, seconds, step_size):
 
     return df
 
-#added 30.12.2022
+#added 30.12.2022 - updated 05.01.2023
 def add_moving_window_2(df, hz_old_data, seconds, step_size):
     rows = hz_old_data * seconds
 
@@ -352,7 +380,17 @@ def add_moving_window_2(df, hz_old_data, seconds, step_size):
             'v_gyroscope':  ["mean", "std"],
             'v_magnetometer':  ["mean", "std"],
             'v_gravity':  ["mean", "std"],
-            'v_orientation':  ["mean", "std"]
+            'v_orientation':  ["mean", "std"],
+            'min_accelerometer': ["mean", "std"],
+            'max_accelerometer': ["mean", "std"],
+            'min_gyroscope': ["mean", "std"],
+            'max_gyroscope': ["mean", "std"],
+            'min_magnetometer': ["mean", "std"],
+            'max_magnetometer': ["mean", "std"],
+            'min_gravity': ["mean", "std"],
+            'max_gravity': ["mean", "std"],
+            'min_orientation': ["mean", "std"],
+            'max_orientation': ["mean", "std"]
 
         }
     )[int(rows / step_size):]
