@@ -21,7 +21,7 @@ def update_meta_data():
                 'walking_jg_4.csv', 'walking_jg_5.csv',  # added JG 20221025
                 'walking_nz_5.csv', 'running_nz_6.csv', 'running_nz_7.csv', 'cycling_nz_8.csv',
                 'cycling_nz_9.csv',  # added 20221108
-                'sitting_nz_10.csv','sitting_nz_11.csv'
+                'sitting_nz_10.csv', 'sitting_nz_11.csv'
             ],
             'user': [
                 'jg', 'jg', 'jg', 'jg', 'jg',
@@ -37,7 +37,7 @@ def update_meta_data():
                 'jg', 'jg',  # added JG 20221025
                 'nz', 'nz', 'nz', 'nz',
                 'nz',  # added 20221108
-                'nz','nz',
+                'nz', 'nz',
             ],
             'activity': [
                 'walking', 'walking', 'walking', 'running', 'running',
@@ -69,7 +69,7 @@ def update_meta_data():
                 'left pant pocket', 'left pant pocket',  # added JG 20221025
                 'left pant pocket', 'left pant pocket', 'left pant pocket', 'left pant pocket',
                 'left pant pocket',  # added 20221108
-                'left pant pocket','left pant pocket',
+                'left pant pocket', 'left pant pocket',
             ],
             'position_x': [
                 'screen towards body', 'screen towards body', 'screen towards body', 'screen towards body',
@@ -151,13 +151,16 @@ def load_clean(from_file, remove_cols, to_file):
     # Drop unnecessary columns, round to 6 decimal places, output to csv file
     df.drop(remove_cols, axis=1).round(6).to_csv(to_file, index=False)
 
-#added 30.12.2022
-def vector_magnitude(df, x,y,z):
+# added 30.12.2022
+
+
+def vector_magnitude(df, x, y, z):
     '''
     function to calculate the vector magnitude
     '''
-    v =(df[x]**2 + df[y]**2 + df[z]**2).pow(1/2)
+    v = (df[x]**2 + df[y]**2 + df[z]**2).pow(1 / 2)
     return v
+
 
 def read_nz_file(file: str, activity: str) -> pd.DataFrame:
     df = pd.read_csv(f'data/{file}')[1200:-1200]
@@ -373,7 +376,8 @@ def add_moving_window(df, hz_old_data, seconds, step_size):
 
     return df
 
-#added 30.12.2022 - updated 05.01.2023
+
+# added 30.12.2022 - updated 05.01.2023
 def add_moving_window_2(df, hz_old_data, seconds, step_size):
     rows = hz_old_data * seconds
 
@@ -382,11 +386,11 @@ def add_moving_window_2(df, hz_old_data, seconds, step_size):
     # get mean and std for rolling window
     df = df.rolling(window=rows, step=step_size).agg(
         {
-            'v_accelerometer' : ["mean", "std"],
-            'v_gyroscope':  ["mean", "std"],
-            'v_magnetometer':  ["mean", "std"],
-            'v_gravity':  ["mean", "std"],
-            'v_orientation':  ["mean", "std"],
+            'v_accelerometer': ["mean", "std"],
+            'v_gyroscope': ["mean", "std"],
+            'v_magnetometer': ["mean", "std"],
+            'v_gravity': ["mean", "std"],
+            'v_orientation': ["mean", "std"],
             'min_accelerometer': ["mean", "std"],
             'max_accelerometer': ["mean", "std"],
             'min_gyroscope': ["mean", "std"],

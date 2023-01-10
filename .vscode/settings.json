@@ -20,8 +20,14 @@
     "editor.renderWhitespace": "trailing",
     "editor.rulers": [120],
     "workbench.colorCustomizations": {
-        "editorRuler.foreground": "#37373d"
+        "editorRuler.foreground": "#37373d",
+        "titleBar.activeBackground": "#b99656",
+        "titleBar.inactiveBackground": "#b99656",
+        "titleBar.activeForeground": "#F1f1f1"
     },
     "autoDocstring.docstringFormat": "google",
     "cSpell.language": "en,de-de",
+    "cSpell.words": [
+        "Numberof"
+    ],
 }

@@ -25,6 +25,8 @@ running_nz_1.csv,nz,running,left jacket pocket,screen not towards body,upright
 running_nz_3.csv,nz,running,left pant pocket,screen not towards body,upright
 running_nz_6.csv,nz,running,left pant pocket,screen towards body,upside down
 running_nz_7.csv,nz,running,left pant pocket,screen towards body,upright
+sitting_nz_10.csv,nz,sitting,left pant pocket,screen towards body,upside down
+sitting_nz_11.csv,nz,sitting,left pant pocket,screen towards body,upside down
 sitting_nz_3.csv,nz,sitting,left pant pocket,screen not towards body,upright
 walking_nz_1.csv,nz,walking,left jacket pocket,screen not towards body,upright
 walking_nz_2.csv,nz,walking,left jacket pocket,screen towards body,upright
