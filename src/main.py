@@ -302,7 +302,10 @@ def read_jg_file(file: str, activity: str) -> pd.DataFrame:
     return df
 
 
-def split_df(df: pd.DataFrame, hz: float, test_proportion: float, moving_window_size: float):
+def split_df(
+        df: pd.DataFrame, hz: float, test_proportion: float, moving_window_size: float,
+        select_train_files: str = 'all', user: str = 'none', position_x: str = 'none'):
+
     # select every nth row
     if test_proportion > 100:
         raise Exception('hz must be less than 100!')
@@ -319,18 +322,34 @@ def split_df(df: pd.DataFrame, hz: float, test_proportion: float, moving_window_
     # test_per_minute = int(60 * test_proportion * hz)
     # train_per_minute = int((60 * hz) - test_per_minute)
 
-    while len(df) / hz > 0:
-        if len(df) / hz < 600:
-            x = df
-            df = pd.DataFrame()
-        else:
-            x = df[:300 * hz:]
-            df = df[300 * hz:]
+    # use parts of every file in aggregation
+    if select_train_files == 'all':
+        while len(df) / hz > 0:
+            if len(df) / hz < 600:
+                x = df
+                df = pd.DataFrame()
+            else:
+                x = df[:300 * hz:]
+                df = df[300 * hz:]
 
-        train_count = int((len(x) - (moving_window_size * hz * 2)) * (1 - test_proportion)) + (moving_window_size * hz)
+            train_count = int(
+                (len(x) - (moving_window_size * hz * 2)) * (1 - test_proportion)
+            ) + (moving_window_size * hz)
 
-        my_train_files.append(x.iloc[: train_count])
-        my_test_files.append(x.iloc[train_count:])
+            my_train_files.append(x.iloc[: train_count])
+            my_test_files.append(x.iloc[train_count:])
+    # use jg files for training and nz for test
+    elif select_train_files == 'user':
+        if user == 'jg':
+            my_train_files.append(df)
+        elif user == 'nz':
+            my_test_files.append(df)
+    # use screen towards body for training and opposite for test
+    elif select_train_files == 'position_x':
+        if position_x == 'screen towards body':
+            my_train_files.append(df)
+        elif position_x == 'screen not towards body':
+            my_test_files.append(df)
 
     return (my_train_files, my_test_files)
 
