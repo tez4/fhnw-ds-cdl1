@@ -10,6 +10,7 @@ Activity recognition based on phone sensors.
 
 ## Jupyter Notebooks
 
+- [Visualizations and Data Exploration](visualizations.ipynb)
 - [Preprocessing](preprocessing.ipynb)
 - [Logistic Regression](model_logistic_regression.ipynb)
 - [Decision Tree and Random Forest](model_decision_tree.ipynb)
