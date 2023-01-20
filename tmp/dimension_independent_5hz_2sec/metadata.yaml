@@ -1,0 +1,7 @@
+AGGREGATION: normal
+FEATURES: min, max, EucDist (mean & std)
+HZ: 5
+MOVING_WINDOW_SIZE: 2
+PREPROCESSING: dimension_independent_5hz_2sec
+STEP_SIZE: 5
+TEST_PROPORTION: 0.2
