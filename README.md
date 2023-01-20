@@ -1,6 +1,11 @@
 # fhnw-ds-cdl1
 Activity recognition based on phone sensors.
 
+## Reports About Model Training
+
+Part 1: [Decision tree models](https://wandb.ai/cdl1/CDL1/reports/Decision-tree-models-for-Human-sensor-activity-classification--VmlldzozMzAwNTg3?accessToken=f3m76hy7vl4slbxmxiyq9du07rk045c1nzsgutcb0vjy58ew3c98hy1up6ly6a3s)
+Part 2: [Training Sequential Deep Learning Models](https://api.wandb.ai/report/cdl1/h26lu1my)
+
 ## Installation
 
 In this project, we are using Pipenv for dependency management. Thus, you need the `pipenv` CLI tool installed on your computer:
