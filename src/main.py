@@ -304,7 +304,7 @@ def read_jg_file(file: str, activity: str) -> pd.DataFrame:
 
 def split_df(
         df: pd.DataFrame, hz: float, test_proportion: float, moving_window_size: float,
-        select_train_files: str = 'all', user: str = 'none', position_x: str = 'none'):
+        select_train_files: str = 'all', user: str = 'none', position_x: str = 'none', index=0):
 
     # select every nth row
     if test_proportion > 100:
@@ -349,6 +349,12 @@ def split_df(
         if position_x == 'screen towards body':
             my_train_files.append(df)
         elif position_x == 'screen not towards body':
+            my_test_files.append(df)
+    # use index of file to determine if it's training or test
+    elif select_train_files == 'index':
+        if index % 2 == 0:
+            my_train_files.append(df)
+        elif index % 2 == 1:
             my_test_files.append(df)
 
     return (my_train_files, my_test_files)
