@@ -1,10 +1,19 @@
 # fhnw-ds-cdl1
 Activity recognition based on phone sensors.
 
-## Reports About Model Training
+## Reports
 
-Part 1: [Decision tree models](https://wandb.ai/cdl1/CDL1/reports/Decision-tree-models-for-Human-sensor-activity-classification--VmlldzozMzAwNTg3?accessToken=f3m76hy7vl4slbxmxiyq9du07rk045c1nzsgutcb0vjy58ew3c98hy1up6ly6a3s)
-Part 2: [Training Sequential Deep Learning Models](https://api.wandb.ai/report/cdl1/h26lu1my)
+- [Planning](Planung.md)
+- [Preprocessing and Model training](VSR_Report_SensorBasedActivityRecognition_NZu_JGr_HS22.pdf)
+- [Decision tree models](https://wandb.ai/cdl1/CDL1/reports/Decision-tree-models-for-Human-sensor-activity-classification--VmlldzozMzAwNTg3?accessToken=f3m76hy7vl4slbxmxiyq9du07rk045c1nzsgutcb0vjy58ew3c98hy1up6ly6a3s)
+- [Sequential Deep Learning Models](https://api.wandb.ai/report/cdl1/h26lu1my)
+
+## Jupyter Notebooks
+
+- [Preprocessing](preprocessing.ipynb)
+- [Logistic Regression](model_logistic_regression.ipynb)
+- [Decision Tree and Random Forest](model_decision_tree.ipynb)
+- [RNN and CNN](model_NN.ipynb)
 
 ## Installation
 
